@@ -27,16 +27,16 @@ export class CatController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.catService.findOne(+id);
+    return this.catService.findOne(id);
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateCatDto: UpdateCatDto) {
-    return this.catService.update(+id, updateCatDto);
+    return this.catService.update(id, updateCatDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.catService.remove(+id);
+    return this.catService.remove(id);
   }
 }

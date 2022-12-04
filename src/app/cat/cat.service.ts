@@ -8,23 +8,26 @@ export class CatService {
   async create(createCatDto: CreateCatDto): Promise<Cat> {
     const cat: Cat = new Cat();
     cat.name = createCatDto.name;
-    cat.sex = createCatDto.sex;
+    // cat.sex = createCatDto.sex;
+    cat.desc = createCatDto.desc;
     return cat.save();
   }
 
-  findAll() {
-    return `This action returns all cat`;
+  async findAll() {
+    const cats: Cat[] = await Cat.find();
+    return cats;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} cat`;
+  async findOne(id: string) {
+    const cat: Cat = await Cat.findOneBy({ id });
+    return cat;
   }
 
-  update(id: number, updateCatDto: UpdateCatDto) {
+  update(id: string, updateCatDto: UpdateCatDto) {
     return `This action updates a #${id} cat`;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} cat`;
+  async remove(id: string) {
+    return await Cat.delete(id);
   }
 }

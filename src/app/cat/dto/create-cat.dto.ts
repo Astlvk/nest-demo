@@ -6,4 +6,6 @@ export class CreateCatDto {
 
   @IsNotEmpty()
   readonly sex: string;
+
+  readonly desc: string;
 }
